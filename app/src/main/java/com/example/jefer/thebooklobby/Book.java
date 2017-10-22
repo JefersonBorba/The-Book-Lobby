@@ -1,90 +1,163 @@
 package com.example.jefer.thebooklobby;
 
-import android.text.TextUtils;
+import java.io.Serializable;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+/**
+ * Created by jefer on 10/21/2017.
+ */
 
-import java.util.ArrayList;
+public class Book implements Serializable {
+    private String mTitle;
+    private String mAuthor;
+    private String mPublisher;
+    private String mPublishedDate;
+    private String mDescription;
+    private int mPageCount;
+    private String mPrintType;
+    private String mCategory;
+    private double mRating;
+    private String mThumbnail;
+    private double mPrice;
+    private String mCurrency;
+    private boolean isEbook;
+    private boolean isEpub;
+    private boolean isPdf;
 
-public class Book {
-    private String openLibraryId;
-    private String author;
-    private String title;
-
-    public String getOpenLibraryId() {
-        return openLibraryId;
+    public Book(String title, String author, String publisher, String publishedDate, String description, int pageCount, String printType, String category, double rating, String thumbnail, double price, String currency, boolean isEbook, boolean isEpub, boolean isPdf) {
+        mTitle = title;
+        mAuthor = author;
+        mPublisher = publisher;
+        mPublishedDate = publishedDate;
+        mDescription = description;
+        mPageCount = pageCount;
+        mPrintType = printType;
+        mCategory = category;
+        mRating = rating;
+        mThumbnail = thumbnail;
+        mPrice = price;
+        mCurrency = currency;
+        this.isEbook = isEbook;
+        this.isEpub = isEpub;
+        this.isPdf = isPdf;
     }
 
     public String getTitle() {
-        return title;
+        return mTitle;
+    }
+
+    public void setTitle(String title) {
+        mTitle = title;
     }
 
     public String getAuthor() {
-        return author;
+        return mAuthor;
     }
 
-    // Get book cover from covers API
-    public String getCoverUrl() {
-        return "http://covers.openlibrary.org/b/olid/" + openLibraryId + "-L.jpg?default=false";
+    public void setAuthor(String author) {
+        mAuthor = author;
     }
 
-    // Returns a Book given the expected JSON
-    public static Book fromJson(JSONObject jsonObject) {
-        Book book = new Book();
-        try {
-            // Deserialize json into object fields
-            // Check if a cover edition is available
-            if (jsonObject.has("cover_edition_key")) {
-                book.openLibraryId = jsonObject.getString("cover_edition_key");
-            } else if(jsonObject.has("edition_key")) {
-                final JSONArray ids = jsonObject.getJSONArray("edition_key");
-                book.openLibraryId = ids.getString(0);
-            }
-            book.title = jsonObject.has("title_suggest") ? jsonObject.getString("title_suggest") : "";
-            book.author = getAuthor(jsonObject);
-        } catch (JSONException e) {
-            e.printStackTrace();
-            return null;
-        }
-        // Return new object
-        return book;
+    public String getPublisher() {
+        return mPublisher;
     }
 
-    // Return comma separated author list when there is more than one author
-    private static String getAuthor(final JSONObject jsonObject) {
-        try {
-            final JSONArray authors = jsonObject.getJSONArray("author_name");
-            int numAuthors = authors.length();
-            final String[] authorStrings = new String[numAuthors];
-            for (int i = 0; i < numAuthors; ++i) {
-                authorStrings[i] = authors.getString(i);
-            }
-            return TextUtils.join(", ", authorStrings);
-        } catch (JSONException e) {
-            return "";
-        }
+    public void setPublisher(String publisher) {
+        mPublisher = publisher;
     }
 
-    // Decodes array of book json results into business model objects
-    public static ArrayList<Book> fromJson(JSONArray jsonArray) {
-        ArrayList<Book> books = new ArrayList<>(jsonArray.length());
-        // Process each result in json array, decode and convert to business
-        // object
-        for (int i = 0; i < jsonArray.length(); i++) {
-            JSONObject bookJson;
-            try {
-                bookJson = jsonArray.getJSONObject(i);
-            } catch (Exception e) {
-                e.printStackTrace();
-                continue;
-            }
-            Book book = Book.fromJson(bookJson);
-            if (book != null) {
-                books.add(book);
-            }
-        }
-        return books;
+    public String getPublishedDate() {
+        return mPublishedDate;
+    }
+
+    public void setPublishedDate(String publishedDate) {
+        mPublishedDate = publishedDate;
+    }
+
+    public String getDescription() {
+        return mDescription;
+    }
+
+    public void setDescription(String description) {
+        mDescription = description;
+    }
+
+    public int getPageCount() {
+        return mPageCount;
+    }
+
+    public void setPageCount(int pageCount) {
+        mPageCount = pageCount;
+    }
+
+    public String getPrintType() {
+        return mPrintType;
+    }
+
+    public void setPrintType(String printType) {
+        mPrintType = printType;
+    }
+
+    public String getCategory() {
+        return mCategory;
+    }
+
+    public void setCategory(String category) {
+        mCategory = category;
+    }
+
+    public double getRating() {
+        return mRating;
+    }
+
+    public void setRating(double rating) {
+        mRating = rating;
+    }
+
+    public String getThumbnail() {
+        return mThumbnail;
+    }
+
+    public void setThumbnail(String thumbnail) {
+        mThumbnail = thumbnail;
+    }
+
+    public double getPrice() {
+        return mPrice;
+    }
+
+    public void setPrice(double price) {
+        mPrice = price;
+    }
+
+    public String getCurrency() {
+        return mCurrency;
+    }
+
+    public void setCurrency(String currency) {
+        mCurrency = currency;
+    }
+
+    public boolean isEbook() {
+        return isEbook;
+    }
+
+    public void setEbook(boolean ebook) {
+        isEbook = ebook;
+    }
+
+    public boolean isEpub() {
+        return isEpub;
+    }
+
+    public void setEpub(boolean epub) {
+        isEpub = epub;
+    }
+
+    public boolean isPdf() {
+        return isPdf;
+    }
+
+    public void setPdf(boolean pdf) {
+        isPdf = pdf;
     }
 }
