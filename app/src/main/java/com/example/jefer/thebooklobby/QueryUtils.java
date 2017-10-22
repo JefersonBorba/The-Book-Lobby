@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by jefer on 10/21/2017.
+ * Created by Jeff on 10/21/2017.
  */
 
 public class QueryUtils {
@@ -56,9 +56,6 @@ public class QueryUtils {
 
     /**
      * To query Google Books API
-     *
-     * @param requestUrl A string url
-     * @return List of data type Book
      */
     public static List<Book> fetchBookData(String requestUrl) {
         //Create URL object
@@ -79,9 +76,6 @@ public class QueryUtils {
 
     /**
      * Method to convert String url to URL object
-     *
-     * @param stringUrl String
-     * @return URL object
      */
     public static URL createUrl(String stringUrl) {
         URL url = null;

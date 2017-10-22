@@ -12,7 +12,7 @@ import com.example.jefer.thebooklobby.databinding.BookListBinding;
 import java.util.ArrayList;
 
 /**
- * Created by jefer on 10/21/2017.
+ * Created by Jeff on 10/21/2017.
  */
 
 public class BookListAdapter extends ArrayAdapter<Book> {

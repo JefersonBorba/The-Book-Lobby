@@ -45,11 +45,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Took help from this answer to detect special characters
-     * https://stackoverflow.com/a/1795436/6494628
+     *detect special characters
      *
-     * @param query
-     * @return
      */
     private boolean isQueryValid(String query) {
         if (query.isEmpty()) {

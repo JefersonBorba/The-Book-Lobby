@@ -16,6 +16,8 @@
 
     </style>
 
+    <!-- book search style -->
+
     <style name="EditTextStyle">
         <item name="android:gravity">center</item>
         <item name="android:hint">@string/hint</item>

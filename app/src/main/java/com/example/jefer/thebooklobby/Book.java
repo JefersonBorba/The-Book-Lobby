@@ -3,7 +3,7 @@ package com.example.jefer.thebooklobby;
 import java.io.Serializable;
 
 /**
- * Created by jefer on 10/21/2017.
+ * Created by Jeff on 10/21/2017.
  */
 
 public class Book implements Serializable {

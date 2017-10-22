@@ -6,7 +6,7 @@ import android.content.Context;
 import java.util.List;
 
 /**
- * Created by jefer on 10/21/2017.
+ * Created by Jeff on 10/21/2017.
  */
 
 public class BookListLoader extends AsyncTaskLoader<List<Book>> {

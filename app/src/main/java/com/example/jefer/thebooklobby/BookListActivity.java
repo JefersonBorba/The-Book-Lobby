@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by jefer on 10/21/2017.
+ * Created by Jeff on 10/21/2017.
  */
 
 public class BookListActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<List<Book>> {
@@ -28,9 +28,7 @@ public class BookListActivity extends AppCompatActivity implements LoaderManager
     private BookListAdapter adapter;
 
     /**
-     * Since Data Binding library was not able to load images so I Google'd and found solution
-     * https://stackoverflow.com/a/35809319/6494628
-     * This code is required only once in whole App.
+     * binding image
      */
     @BindingAdapter("bind:image_url")
     public static void loadImage(ImageView imageView, String url) {
